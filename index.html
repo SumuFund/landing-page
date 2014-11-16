@@ -487,7 +487,7 @@ html, body {
         <!-- <div class="fs&#45;title"> -->
         <!--  <h1>SumuFund Survey</h1> -->
         <!-- </div> -->
-        <iframe onload='loaded()' name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         <form id="form" class="fs-form fs-form-full" method="post" action="https://docs.google.com/forms/d/1nGQ9ZhAF5Ca-jkfonaZnFCaOEmYRWv0FoZGjAVwnz84/formResponse" target="hidden_iframe" autocomplete="off">
           <ol class="fs-fields">
 <!--             <li>
@@ -752,9 +752,9 @@ html, body {
         $('#form').submit(function() {
          // postToGoogle();
           $('#fs-form-wrap').css('display', 'none');
-          $('#success').html('<h1 style="margin-top: 50px;text-align:center;color: #333;font-size: 150%;">Thanks! Your survey was recorded.</h1><p style="text-align: center"><a href="#" class="close-survey">Close Survey</a></p>');
-          $('.close-survey').on('click', toggleSurvey);
-          });
+          $('#success').html('<h1 style="margin-top: 50px;text-align:center;color: #333;font-size: 150%;">Loading...</h1>');
+          setTimeout(function() { $('#success').html('<h1 style="margin-top: 50px;text-align:center;color: #333;font-size: 150%;">Thanks! Your survey was recorded.</h1><p style="text-align: center"><a href="#" class="close-survey">Close Survey</a></p>'); $('.close-survey').on('click', toggleSurvey); }, 2400);
+        });
 
         function toggleSurvey() {
          $('.container-form-overlay').css({ 'position': 'absolute', 'top': '0px' });
