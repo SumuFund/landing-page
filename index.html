@@ -32,17 +32,7 @@
 	<![endif]-->
 
   <script src="js/modernizr.custom.js"></script>
-    <script>
-    var loadComplete = 0;
-    function loaded() {
-      if(loadComplete==0) {
-            loadComplete=1;
-            return;
-        }
-        toggleSurvey();
-     }
-
-      </script>
+ 
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -490,14 +480,14 @@ html, body {
   </div>
   </div>
   	
-  <iframe onload='loaded()' name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
    
    <div class="container-form-overlay">
-
+      <div id="success"></div>
       <div class="fs-form-wrap" id="fs-form-wrap">
         <!-- <div class="fs&#45;title"> -->
         <!--  <h1>SumuFund Survey</h1> -->
         <!-- </div> -->
+        <iframe onload='loaded()' name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         <form id="form" class="fs-form fs-form-full" method="post" action="https://docs.google.com/forms/d/1nGQ9ZhAF5Ca-jkfonaZnFCaOEmYRWv0FoZGjAVwnz84/formResponse" target="hidden_iframe" autocomplete="off">
           <ol class="fs-fields">
 <!--             <li>
@@ -761,9 +751,9 @@ html, body {
 
         $('#form').submit(function() {
          // postToGoogle();
-          $('.container-form-overlay').html('<h1 style="margin-top: 50px;text-align:center;color: #333;font-size: 150%;">Thanks! Your survey was recorded.</h1><p style="text-align: center"><a href="#" class="close-survey">Close Survey</a></p>');
+          $('#fs-form-wrap').css('display', 'none');
+          $('#success').html('<h1 style="margin-top: 50px;text-align:center;color: #333;font-size: 150%;">Thanks! Your survey was recorded.</h1><p style="text-align: center"><a href="#" class="close-survey">Close Survey</a></p>');
           $('.close-survey').on('click', toggleSurvey);
-          return false;
           });
 
         function toggleSurvey() {
